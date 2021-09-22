@@ -1,9 +1,9 @@
-import { Home } from "../pages";
+import Router from "../config/Router";
 
 function App() {
   return (
     <div className="App">
-      <Home />
+      <Router />
     </div>
   );
 }

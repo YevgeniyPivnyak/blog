@@ -1,16 +1,47 @@
 import { createTheme } from "@material-ui/core/styles";
-import purple from "@material-ui/core/colors/purple";
-import green from "@material-ui/core/colors/green";
+import { Theme } from "@material-ui/system";
+import { CSSProperties } from "react";
 
 const theme = {
+  background: "#ddd",
+  mixins: {},
+  components: {},
   palette: {
     primary: {
-      main: "#c70c0c",
+      light: "#000",
+      main: "#ddd",
+      dark: "#000",
+      contrastText: "#fff",
     },
     secondary: {
-      main: green[500],
+      light: "#ff7961",
+      main: "#f44336",
+      dark: "#ba000d",
+      contrastText: "#000",
     },
   },
+  transitions: {},
+  typography: {},
+  zIndex: {},
+  page: {
+    width: "1000px",
+    margin: "auto",
+  },
 };
+
+type CustomTheme = {
+  // [Key in keyof typeof theme]: typeof theme[Key];
+  page: {
+    width: CSSProperties["width"];
+    margin: CSSProperties["margin"];
+  };
+};
+
+declare module "@material-ui/core/styles/createTheme" {
+  interface Theme extends CustomTheme {}
+  interface ThemeOptions extends CustomTheme {}
+}
+
+export type AppTheme = Theme & CustomTheme;
 
 export default createTheme(theme);
