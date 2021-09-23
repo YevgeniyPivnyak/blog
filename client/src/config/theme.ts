@@ -3,26 +3,6 @@ import { Theme } from "@material-ui/system";
 import { CSSProperties } from "react";
 
 const theme = {
-  background: "#ddd",
-  mixins: {},
-  components: {},
-  palette: {
-    primary: {
-      light: "#000",
-      main: "#ddd",
-      dark: "#000",
-      contrastText: "#fff",
-    },
-    secondary: {
-      light: "#ff7961",
-      main: "#f44336",
-      dark: "#ba000d",
-      contrastText: "#000",
-    },
-  },
-  transitions: {},
-  typography: {},
-  zIndex: {},
   page: {
     width: "1000px",
     margin: "auto",
