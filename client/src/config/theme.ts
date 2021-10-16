@@ -1,5 +1,4 @@
-import { createTheme } from "@material-ui/core/styles";
-import { Theme } from "@material-ui/system";
+import { createTheme, Theme } from "@mui/material";
 import { CSSProperties } from "react";
 
 const theme = {
@@ -17,7 +16,7 @@ type CustomTheme = {
   };
 };
 
-declare module "@material-ui/core/styles/createTheme" {
+declare module "@mui/material" {
   interface Theme extends CustomTheme {}
   interface ThemeOptions extends CustomTheme {}
 }

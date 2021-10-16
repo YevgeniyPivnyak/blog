@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import App from "./components/App";
 import reportWebVitals from "./config/reportWebVitals";
-import { ThemeProvider } from "@material-ui/styles";
+import { ThemeProvider } from "@mui/styles";
 import theme from "./config/theme";
 
 ReactDOM.render(

@@ -1,6 +1,7 @@
-import { makeStyles } from "@material-ui/styles";
-import { AppTheme } from "../../config/theme";
-import { MenuNav } from "../MenuNav";
+import { makeStyles } from "@mui/styles";
+import { AppTheme } from "config/theme";
+import { MenuNav } from "components";
+import { navigation } from "settings";
 
 const useStyles = makeStyles<AppTheme>((theme) => ({
   root: {
@@ -13,7 +14,7 @@ export const Header = () => {
 
   return (
     <div className={classes.root}>
-      <MenuNav />
+      <MenuNav items={navigation} />
     </div>
   );
 };

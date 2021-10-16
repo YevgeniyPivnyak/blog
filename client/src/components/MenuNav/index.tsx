@@ -1,50 +1,33 @@
-import { NavLink } from "react-router-dom";
-import { makeStyles } from "@material-ui/styles";
-import { AppTheme } from "../../config/theme";
+/** @jsxImportSource @emotion/react */
+import { css } from "@emotion/react";
+import { useTheme } from "@mui/material";
+import { AppTheme } from "config/theme";
+import { MenuItem } from "./components";
 
-const useStyles = makeStyles<AppTheme>((theme) => ({
-  root: {
-    display: "flex",
-    background: theme.palette.primary.light,
-    margin: "0",
-    padding: "0",
-    "& li": {
-      listStyle: "none",
-    },
-    "& a": {
-      color: "#fff",
-      fontWeight: "bold",
-      textTransform: "uppercase",
-      textDecoration: "none",
-      display: "block",
-      padding: "15px",
-    },
-    "& a.active": {
-      background: theme.palette.primary.dark,
-    },
-  },
-}));
+interface Item {
+  id: number;
+  title: string;
+  link: string;
+}
+interface Props {
+  items: ReadonlyArray<Item>;
+}
 
-export const MenuNav = () => {
-  const classes = useStyles();
+export const MenuNav = ({ items }: Props) => {
+  const theme: AppTheme = useTheme();
 
   return (
-    <ul className={classes.root}>
-      <li>
-        <NavLink exact to="/">
-          Home
-        </NavLink>
-      </li>
-      <li>
-        <NavLink exact to="/post-edit">
-          Edit Post
-        </NavLink>
-      </li>
-      <li>
-        <NavLink exact to="/about">
-          About
-        </NavLink>
-      </li>
+    <ul
+      css={css`
+        display: flex;
+        padding: 0;
+        margin: 0;
+        background: ${theme.palette.info.light};
+      `}
+    >
+      {items.map(({ id, title, link }: Item) => (
+        <MenuItem key={id} title={title} link={link} />
+      ))}
     </ul>
   );
 };
