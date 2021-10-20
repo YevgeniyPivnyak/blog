@@ -1,13 +1,13 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import { NavLink } from "react-router-dom";
+import { PostInerface } from "../interfaces";
 
 interface Props {
-  title: string;
-  link: string;
+  data: PostInerface;
 }
 
-export const MenuItem = ({ title, link }: Props) => (
+export const Post = ({ data: { title, link } }: Props) => (
   <li
     css={css`
       list-style: none;
