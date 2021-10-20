@@ -1,20 +1,29 @@
-import { makeStyles } from "@mui/styles";
-import { Button } from "@mui/material";
+/** @jsxImportSource @emotion/react */
+import { css } from "@emotion/react";
+import { Button, useTheme } from "@mui/material";
 import { AppTheme } from "../config/theme";
-
-const useStyles = makeStyles<AppTheme>((theme) => ({
-  root: {
-    ...theme.page,
-  },
-}));
+import { Posts } from "components";
+import { useEffect, useState } from "react";
 
 export const Home = () => {
-  const classes = useStyles();
+  const theme: AppTheme = useTheme();
+
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:9000/posts")
+      .then((response) => response.json())
+      .then((posts) => setPosts(posts));
+  }, []);
 
   return (
-    <div className={classes.root}>
-      <h1>Home blog</h1>
-      <Button color="primary">Contained</Button>
+    <div
+      css={css`
+        max-width: ${theme.page.width};
+        margin: ${theme.page.margin};
+      `}
+    >
+      <Posts posts={posts} />
     </div>
   );
 };
